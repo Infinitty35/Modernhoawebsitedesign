@@ -1,5 +1,6 @@
 import { Outlet, Link, useLocation } from 'react-router';
 import { Home, Building2, FileText, ExternalLink, Mail } from 'lucide-react';
+import logo from 'figma:asset/fda62cdf1d6e93801191e9dde364ae8c2a8bd3b0.png';
 
 export function Layout() {
   const location = useLocation();
@@ -19,9 +20,11 @@ export function Layout() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <Link to="/" className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center shadow-md">
-                <Home className="w-6 h-6 text-white" />
-              </div>
+              <img 
+                src={logo} 
+                alt="Union Station South Logo" 
+                className="w-12 h-12 object-contain"
+              />
               <div>
                 <h1 className="text-xl font-semibold text-slate-800">Union Station South</h1>
                 <p className="text-xs text-slate-500">Homeowners Association</p>

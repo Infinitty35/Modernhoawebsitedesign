@@ -28,14 +28,19 @@ export function Covenants() {
               Access the complete set of covenants, conditions, and restrictions for Union Station South. 
               These documents outline the rules and regulations that help maintain our community standards.
             </p>
-            <Button 
-              size="lg" 
-              className="bg-emerald-600 hover:bg-emerald-700 text-white shadow-lg"
-              onClick={() => window.alert('Download link would be configured here. Please contact management for the covenant documents.')}
+            <a 
+              href="https://drive.google.com/file/d/1BAilhltDGCuzKAeFvoep8y0buCQMHE73/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              <Download className="w-5 h-5 mr-2" />
-              Download Covenants (PDF)
-            </Button>
+              <Button 
+                size="lg" 
+                className="bg-emerald-600 hover:bg-emerald-700 text-white shadow-lg"
+              >
+                <Download className="w-5 h-5 mr-2" />
+                Download Covenants (PDF)
+              </Button>
+            </a>
           </div>
         </Card>
       </div>

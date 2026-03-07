@@ -1,7 +1,7 @@
 
-  # Modern HOA Website Design
+  # Union Station South
 
-  This is a code bundle for Modern HOA Website Design. The original project is available at https://www.figma.com/design/l6JK09SElhfGh7kp0vzJw3/Modern-HOA-Website-Design.
+  This is a code bundle for Union Station South. The original project is available at https://www.figma.com/design/l6JK09SElhfGh7kp0vzJw3/Union-Station-South.
 
   ## Running the code
 
