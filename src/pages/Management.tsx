@@ -1,6 +1,5 @@
-import { Building2, MapPin, Phone, Mail, Globe } from 'lucide-react';
+import { Building2, MapPin, Mail, Globe, Phone } from 'lucide-react';
 import { Card } from '../components/ui/card';
-import { Button } from '../components/ui/button';
 
 export function Management() {
   return (
@@ -24,7 +23,7 @@ export function Management() {
             <p className="text-slate-600">Professional HOA Management Services</p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Mailing Address */}
             <div className="flex items-start space-x-4 p-4 rounded-lg bg-slate-50 hover:bg-slate-100 transition-colors">
               <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center flex-shrink-0 shadow-md">
@@ -48,7 +47,7 @@ export function Management() {
                 <h3 className="font-semibold text-slate-800 mb-2">Office Phone</h3>
                 <a 
                   href="tel:918-994-6562" 
-                  className="text-blue-600 hover:text-blue-700 transition-colors text-sm font-medium"
+                  className="text-blue-600 hover:text-blue-700 transition-colors text-sm"
                 >
                   918-994-6562
                 </a>
@@ -88,26 +87,6 @@ export function Management() {
                   www.rp-management.com
                 </a>
               </div>
-            </div>
-          </div>
-
-          <div className="mt-8 pt-8 border-t border-slate-200 text-center">
-            <p className="text-slate-600 mb-6">
-              Have questions or concerns? Our property management team is here to help.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <a href="tel:918-994-6562">
-                <Button className="bg-blue-500 hover:bg-blue-600 text-white">
-                  <Phone className="w-4 h-4 mr-2" />
-                  Call Us
-                </Button>
-              </a>
-              <a href="mailto:k.sloan@rp-management.com">
-                <Button variant="outline" className="border-slate-300 hover:bg-slate-100">
-                  <Mail className="w-4 h-4 mr-2" />
-                  Send Email
-                </Button>
-              </a>
             </div>
           </div>
         </Card>

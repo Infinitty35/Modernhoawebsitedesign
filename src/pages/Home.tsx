@@ -1,5 +1,5 @@
 import { Link } from 'react-router';
-import { Building2, FileText, ExternalLink, Mail, Home as HomeIcon } from 'lucide-react';
+import { Building2, FileText, FolderOpen, Mail, Home as HomeIcon } from 'lucide-react';
 import { Card } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import entranceImage1 from 'figma:asset/376f32aeec7b5c0cf62d74fc0d6bc0f8edf607b3.png';
@@ -8,15 +8,15 @@ import entranceImage2 from 'figma:asset/0f2b25ff6d89d16812bdeaebd7152e4da888fd7f
 export function Home() {
   const quickLinks = [
     {
-      title: 'Property Management',
-      description: 'Contact Robson Property Management for assistance',
+      title: 'Management',
+      description: 'Contact property management team',
       icon: Building2,
       link: '/management',
       color: 'from-blue-500 to-blue-600',
     },
     {
-      title: 'HOA Covenants',
-      description: 'Download and review our community covenants',
+      title: 'Covenants',
+      description: 'Review HOA rules and regulations',
       icon: FileText,
       link: '/covenants',
       color: 'from-emerald-500 to-emerald-600',
@@ -24,7 +24,7 @@ export function Home() {
     {
       title: 'Resources',
       description: 'Access city services and helpful links',
-      icon: ExternalLink,
+      icon: FolderOpen,
       link: '/resources',
       color: 'from-purple-500 to-purple-600',
     },
@@ -51,7 +51,7 @@ export function Home() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
             <div className="max-w-2xl">
               <h1 className="text-5xl md:text-6xl font-light text-slate-800 mb-6 tracking-wide">
-                Beautiful Place to Live
+                A Beautiful Place to Live
               </h1>
               <p className="text-xl text-slate-600 mb-8">
                 Union Station South is recognized for its attractive homes and serene environment
@@ -76,24 +76,19 @@ export function Home() {
       {/* Welcome Section */}
       <section className="bg-white border-y border-slate-200 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-slate-800 mb-12 text-center">Welcome to Our Community</h2>
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold text-slate-800 mb-6">Welcome to Our Community</h2>
               <p className="text-slate-600 mb-4">
                 Union Station South is a vibrant homeowners association located in Broken Arrow, Oklahoma. 
                 Our community is known for its well-maintained properties, friendly neighbors, and commitment 
                 to maintaining a high quality of life for all residents.
               </p>
-              <p className="text-slate-600 mb-6">
+              <p className="text-slate-600">
                 Whether you're a new resident or have been part of our community for years, we're here to 
                 support you. Our property management team and HOA board work together to ensure our 
                 neighborhood remains a beautiful place to call home.
               </p>
-              <Link to="/contact">
-                <Button className="bg-blue-500 hover:bg-blue-600 text-white">
-                  Get in Touch
-                </Button>
-              </Link>
             </div>
             <div>
               <img 

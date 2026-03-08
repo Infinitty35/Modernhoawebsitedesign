@@ -1,5 +1,5 @@
 import { Outlet, Link, useLocation } from 'react-router';
-import { Home, Building2, FileText, ExternalLink, Mail } from 'lucide-react';
+import { Home, Building2, FileText, FolderOpen, Mail } from 'lucide-react';
 import logo from 'figma:asset/fda62cdf1d6e93801191e9dde364ae8c2a8bd3b0.png';
 
 export function Layout() {
@@ -9,7 +9,7 @@ export function Layout() {
     { path: '/', label: 'Home', icon: Home },
     { path: '/management', label: 'Management', icon: Building2 },
     { path: '/covenants', label: 'Covenants', icon: FileText },
-    { path: '/resources', label: 'Resources', icon: ExternalLink },
+    { path: '/resources', label: 'Resources', icon: FolderOpen },
     { path: '/contact', label: 'Contact', icon: Mail },
   ];
 
@@ -52,13 +52,6 @@ export function Layout() {
                 );
               })}
             </nav>
-
-            {/* Mobile Menu Button */}
-            <button className="md:hidden p-2 text-slate-600 hover:bg-slate-100 rounded-lg">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
           </div>
           
           {/* Mobile Navigation */}
