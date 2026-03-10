@@ -1,16 +1,15 @@
 import { Outlet, Link, useLocation } from 'react-router';
-import { Home, Building2, FileText, FolderOpen, Mail } from 'lucide-react';
 import logo from 'figma:asset/fda62cdf1d6e93801191e9dde364ae8c2a8bd3b0.png';
 
 export function Layout() {
   const location = useLocation();
   
   const navItems = [
-    { path: '/', label: 'Home', icon: Home },
-    { path: '/management', label: 'Management', icon: Building2 },
-    { path: '/covenants', label: 'Covenants', icon: FileText },
-    { path: '/resources', label: 'Resources', icon: FolderOpen },
-    { path: '/contact', label: 'Contact', icon: Mail },
+    { path: '/', label: 'Home' },
+    { path: '/management', label: 'Management' },
+    { path: '/covenants', label: 'Covenants' },
+    { path: '/resources', label: 'Resources' },
+    { path: '/contact', label: 'Contact' },
   ];
 
   return (
@@ -34,19 +33,17 @@ export function Layout() {
             {/* Desktop Navigation */}
             <nav className="hidden md:flex space-x-1">
               {navItems.map((item) => {
-                const Icon = item.icon;
                 const isActive = location.pathname === item.path;
                 return (
                   <Link
                     key={item.path}
                     to={item.path}
-                    className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-200 ${
+                    className={`px-4 py-2 rounded-lg transition-all duration-200 ${
                       isActive
                         ? 'bg-blue-500 text-white shadow-md'
                         : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
                     }`}
                   >
-                    <Icon className="w-4 h-4" />
                     <span className="text-sm font-medium">{item.label}</span>
                   </Link>
                 );
@@ -57,19 +54,17 @@ export function Layout() {
           {/* Mobile Navigation */}
           <nav className="md:hidden pb-4 flex flex-wrap gap-2">
             {navItems.map((item) => {
-              const Icon = item.icon;
               const isActive = location.pathname === item.path;
               return (
                 <Link
                   key={item.path}
                   to={item.path}
-                  className={`flex items-center space-x-2 px-3 py-2 rounded-lg transition-all duration-200 text-sm ${
+                  className={`px-3 py-2 rounded-lg transition-all duration-200 text-sm ${
                     isActive
                       ? 'bg-blue-500 text-white shadow-md'
                       : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900 bg-white'
                   }`}
                 >
-                  <Icon className="w-4 h-4" />
                   <span className="font-medium">{item.label}</span>
                 </Link>
               );
