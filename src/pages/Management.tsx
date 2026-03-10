@@ -6,9 +6,6 @@ export function Management() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       {/* Page Header */}
       <div className="text-center mb-12">
-        <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl mb-6 shadow-lg">
-          <Building2 className="w-8 h-8 text-white" />
-        </div>
         <h1 className="text-4xl font-bold text-slate-800 mb-4">Property Management</h1>
         <p className="text-lg text-slate-600 max-w-2xl mx-auto">
           Your dedicated property management team is here to serve the Union Station South community

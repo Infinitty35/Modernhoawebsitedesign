@@ -56,18 +56,6 @@ export function Home() {
               <p className="text-xl text-slate-600 mb-8">
                 Union Station South is recognized for its attractive homes and serene environment
               </p>
-              <div className="flex flex-wrap gap-4">
-                <Link to="/management">
-                  <Button size="lg" className="bg-blue-500 hover:bg-blue-600 text-white shadow-lg">
-                    Contact Management
-                  </Button>
-                </Link>
-                <Link to="/resources">
-                  <Button size="lg" variant="outline" className="border-slate-300 hover:bg-slate-100">
-                    View Resources
-                  </Button>
-                </Link>
-              </div>
             </div>
           </div>
         </div>
