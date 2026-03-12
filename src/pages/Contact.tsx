@@ -16,25 +16,45 @@ export function Contact() {
     message: '',
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real application, this would submit to a backend
-    console.log('Form submitted:', formData);
-    setIsSubmitted(true);
-    toast.success('Message sent successfully!');
-    
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        subject: '',
-        message: '',
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('/make-server-018b3a43/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       });
-      setIsSubmitted(false);
-    }, 3000);
+
+      if (!response.ok) {
+        throw new Error('Unable to submit contact form');
+      }
+
+      setIsSubmitted(true);
+      toast.success('Message sent successfully!');
+      
+      // Reset form after 3 seconds
+      setTimeout(() => {
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          subject: '',
+          message: '',
+        });
+        setIsSubmitted(false);
+      }, 3000);
+    } catch (error) {
+      console.error('Failed to submit contact form', error);
+      toast.error('Unable to send message. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -136,9 +156,10 @@ export function Contact() {
               type="submit" 
               className="w-full bg-orange-500 hover:bg-orange-600 text-white"
               size="lg"
+              disabled={isSubmitting}
             >
               <Send className="w-4 h-4 mr-2" />
-              Send Message
+              {isSubmitting ? 'Sending...' : 'Send Message'}
             </Button>
           </form>
         ) : (
