@@ -17,6 +17,12 @@ export function Contact() {
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const backendErrorMessages: Record<string, string> = {
+    'Invalid request payload': 'Unable to send message. Please check your entries and try again.',
+    'Missing required contact fields': 'Please complete all required fields.',
+    'Invalid email address': 'Please provide a valid email address.',
+    'Unable to process contact form submission': 'Unable to send message right now. Please try again.',
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -32,7 +38,12 @@ export function Contact() {
       });
 
       if (!response.ok) {
-        throw new Error('Unable to submit contact form');
+        const errorBody = await response.json().catch(() => null);
+        const errorMessage =
+          errorBody && typeof errorBody.error === 'string'
+            ? errorBody.error
+            : 'Unable to submit contact form';
+        throw new Error(backendErrorMessages[errorMessage] || 'Unable to send message. Please try again.');
       }
 
       setIsSubmitted(true);
@@ -51,7 +62,8 @@ export function Contact() {
       }, 3000);
     } catch (error) {
       console.error('Failed to submit contact form', error);
-      toast.error('Unable to send message. Please try again.');
+      const fallbackMessage = 'Unable to send message. Please try again.';
+      toast.error(error instanceof Error ? error.message : fallbackMessage);
     } finally {
       setIsSubmitting(false);
     }
