@@ -18,36 +18,40 @@ export function Contact() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL ?? 'http://localhost:3001'}/contact`, {
+      const form = e.target as HTMLFormElement;
+      const data = new FormData(form);
+      data.append('access_key', 'a55f3b3b-3f80-457a-a13e-2f7ea66f0ddb');
+
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: data,
       });
 
-      if (!response.ok) {
-        const data = await response.json().catch(() => ({}));
-        throw new Error(data.error || 'Failed to send message');
+      const result = await response.json();
+
+      if (result.success) {
+        setIsSubmitted(true);
+        toast.success('Message sent successfully!');
+
+        // Reset form after 3 seconds
+        setTimeout(() => {
+          setFormData({
+            name: '',
+            email: '',
+            phone: '',
+            subject: '',
+            message: '',
+          });
+          setIsSubmitted(false);
+        }, 3000);
+      } else {
+        throw new Error(result.message || 'Failed to send message');
       }
-
-      setIsSubmitted(true);
-      toast.success('Message sent successfully!');
-
-      // Reset form after 3 seconds
-      setTimeout(() => {
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          subject: '',
-          message: '',
-        });
-        setIsSubmitted(false);
-      }, 3000);
     } catch (err) {
       console.error('Error submitting contact form:', err);
       toast.error(err instanceof Error ? err.message : 'Failed to send message. Please try again.');
