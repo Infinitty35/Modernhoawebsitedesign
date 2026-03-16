@@ -16,9 +16,11 @@ export function Contact() {
     message: '',
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
 
     try {
       const response = await fetch(`${import.meta.env.VITE_API_URL ?? 'http://localhost:3001'}/contact`, {
@@ -49,6 +51,8 @@ export function Contact() {
     } catch (err) {
       console.error('Error submitting contact form:', err);
       toast.error(err instanceof Error ? err.message : 'Failed to send message. Please try again.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -151,9 +155,10 @@ export function Contact() {
               type="submit" 
               className="w-full bg-orange-500 hover:bg-orange-600 text-white"
               size="lg"
+              disabled={isSubmitting}
             >
               <Send className="w-4 h-4 mr-2" />
-              Send Message
+              {isSubmitting ? 'Sending...' : 'Send Message'}
             </Button>
           </form>
         ) : (
