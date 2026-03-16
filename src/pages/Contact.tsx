@@ -17,10 +17,12 @@ export function Contact() {
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setErrorMessage(null);
 
     try {
       const form = e.target as HTMLFormElement;
@@ -54,7 +56,9 @@ export function Contact() {
       }
     } catch (err) {
       console.error('Error submitting contact form:', err);
-      toast.error(err instanceof Error ? err.message : 'Failed to send message. Please try again.');
+      const message = err instanceof Error ? err.message : 'Failed to send message. Please try again.';
+      setErrorMessage(message);
+      toast.error(message);
     } finally {
       setIsSubmitting(false);
     }
@@ -154,6 +158,12 @@ export function Contact() {
                 placeholder="Please provide details about your inquiry..."
               />
             </div>
+
+            {errorMessage && (
+              <div className="mb-4 p-3 rounded-md bg-red-50 border border-red-200 text-red-700 text-sm">
+                {errorMessage}
+              </div>
+            )}
 
             <Button 
               type="submit" 
