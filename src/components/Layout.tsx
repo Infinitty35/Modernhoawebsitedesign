@@ -1,4 +1,5 @@
 import { Outlet, Link, useLocation } from 'react-router';
+import { Toaster } from './ui/sonner';
 import logo from 'figma:asset/fda62cdf1d6e93801191e9dde364ae8c2a8bd3b0.png';
 
 export function Layout() {
@@ -77,6 +78,8 @@ export function Layout() {
       <main>
         <Outlet />
       </main>
+
+      <Toaster />
 
       {/* Footer */}
       <footer className="bg-white border-t border-slate-200 mt-16">
