@@ -1,5 +1,5 @@
 import { Link } from 'react-router';
-import { Building2, FileText, FolderOpen, Mail, Home as HomeIcon } from 'lucide-react';
+import { Building2, FileText, FolderOpen, Mail } from 'lucide-react';
 import { Card } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import entranceImage1 from 'figma:asset/376f32aeec7b5c0cf62d74fc0d6bc0f8edf607b3.png';
