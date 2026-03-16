@@ -36,7 +36,7 @@ async function sendEmail({ name, email, phone, subject, message }) {
 
   const mailOptions = {
     from: process.env.EMAIL_USER,
-    to: 'elandon@outlook.com',
+    to: process.env.RECIPIENT_EMAIL || 'elandon@outlook.com',
     replyTo: email,
     subject: `Contact Form: ${safe.subject}`,
     html: `
