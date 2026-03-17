@@ -5,6 +5,20 @@
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Union Station South</title>
+      <!-- Google Analytics 4 – Measurement ID: G-NQGRVVWYML
+           The transport_url routes analytics hits through the first-party
+           measurement path so Cloudflare can proxy them server-side.
+           Cloudflare measurement path to configure: /ga4/mp/collect          -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=%VITE_GA_MEASUREMENT_ID%"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '%VITE_GA_MEASUREMENT_ID%', {
+          transport_url: window.location.origin + '/ga4',
+          first_party_collection: true,
+        });
+      </script>
     </head>
 
     <body>
