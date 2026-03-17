@@ -60,13 +60,5 @@
     server: {
       port: 3000,
       open: true,
-      proxy: {
-        // Proxy GA4 measurement hits to the Express server during development.
-        // Matches the /ga4/mp/collect path used by gtag.js transport_url.
-        '/ga4': {
-          target: 'http://localhost:3001',
-          changeOrigin: true,
-        },
-      },
     },
   });

@@ -5,19 +5,13 @@
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Union Station South</title>
-      <!-- Google Analytics 4 – Measurement ID: G-NQGRVVWYML
-           The transport_url routes analytics hits through the first-party
-           measurement path so the server can proxy them to Google Analytics.
-           Server proxy endpoint: POST /ga4/mp/collect               -->
+      <!-- Google tag (gtag.js) – Measurement ID: G-NQGRVVWYML -->
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-NQGRVVWYML"></script>
       <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'G-NQGRVVWYML', {
-          transport_url: window.location.origin + '/ga4',
-          first_party_collection: true,
-        });
+        gtag('config', 'G-NQGRVVWYML');
       </script>
     </head>
 

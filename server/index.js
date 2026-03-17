@@ -3,7 +3,6 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-const https = require('https');
 const { sendEmail } = require('./sendEmail');
 
 const app = express();
@@ -39,46 +38,6 @@ app.post('/contact', async (req, res) => {
 
 // Health check
 app.get('/health', (_req, res) => res.json({ status: 'ok' }));
-
-// Google Analytics 4 – first-party measurement proxy.
-// Cloudflare measurement path: /ga4/mp/collect
-// Forwards GA4 Measurement Protocol hits to Google Analytics so the request
-// appears to come from your own domain, bypassing browser ad-blockers.
-app.post('/ga4/mp/collect', (req, res) => {
-  const qs = new URLSearchParams(req.query).toString();
-  const gaUrl = `https://www.google-analytics.com/mp/collect${qs ? '?' + qs : ''}`;
-  const body = JSON.stringify(req.body || {});
-
-  const proxyReq = https.request(
-    gaUrl,
-    {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Content-Length': Buffer.byteLength(body),
-      },
-    },
-    (proxyRes) => {
-      if (proxyRes.statusCode >= 400) {
-        let raw = '';
-        proxyRes.on('data', (chunk) => { raw += chunk; });
-        proxyRes.on('end', () => {
-          console.error(`GA4 proxy: upstream returned ${proxyRes.statusCode}`, raw);
-          res.status(proxyRes.statusCode).end();
-        });
-      } else {
-        res.status(proxyRes.statusCode).end();
-      }
-    },
-  );
-
-  proxyReq.on('error', (err) => {
-    console.error('GA4 proxy: failed to reach google-analytics.com', err);
-    res.status(502).end();
-  });
-  proxyReq.write(body);
-  proxyReq.end();
-});
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
