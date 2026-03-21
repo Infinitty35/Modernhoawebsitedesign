@@ -51,10 +51,10 @@ export function Home() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
             <div className="max-w-2xl">
               <h1 className="text-5xl md:text-6xl font-light text-slate-800 mb-6 tracking-wide">
-                A Beautiful Place to Live
+                A Premier Neighborhood for Elevated Living
               </h1>
               <p className="text-xl text-slate-600 mb-8">
-                Union Station South is recognized for its attractive homes and serene environment
+                A community of elegant homes, peaceful surroundings, and a strong sense of community
               </p>
             </div>
           </div>
